@@ -1,0 +1,24 @@
+{
+    "name": "rainwaves/paygate-payment",
+    "description": "A package for integrating with the PayGate payment gateway",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "rainwaves\\PaygatePayment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joel Mnisi",
+            "email": "joel.mnisi@protonmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0|^8.1|^8.2",
+        "illuminate/support": "^7.0|^8.0|^8.1|^8.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.28",
+        "friendsofphp/php-cs-fixer": "^3.14"
+    }
+}
