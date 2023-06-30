@@ -12,8 +12,6 @@ class PayGateInitialRequest extends Arrayable
 
     private string $payGateInitialUrl = 'https://secure.paygate.co.za/payweb3/initiate.trans';
 
-    private string $payGateQueryUrl = 'https://secure.paygate.co.za/payweb3/query.trans';
-
     public string $reference;
     public float $amount;
     public string $currency;
