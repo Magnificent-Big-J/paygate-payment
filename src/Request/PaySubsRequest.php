@@ -9,9 +9,8 @@ use rainwaves\PaygatePayment\Entities\PayGateProperties;
 class PaySubsRequest  extends Arrayable
 {
     use AmountConverterTrait, PayGateProperties;
-    private string $payGateFormAction = 'https://www.paygate.co.za/paysubs/process.trans';
-
-    public string $version;
+    protected string $payGateFormAction = 'https://www.paygate.co.za/paysubs/process.trans';
+    public int $version = 21;
     public string $reference;
     public int $amount;
     public string $currency;
@@ -26,27 +25,22 @@ class PaySubsRequest  extends Arrayable
 
     public static function inputRequest(array $input): PaySubsRequest
     {
+        $input = (object) $input;
         $self = new self();
-        $self->payGateId = $input['payGateId'];
-        $self->payGateSecret = $input['payGateSecret'];
-        $self->version = $input['version'];
-        $self->reference = $input['reference'];
-        $self->amount = $self->amountInCents($input['amount']);
-        $self->currency = $input['currency'];
-        $self->returnUrl = $input['returnUrl'];
-        $self->transactionDate = $input['transactionDate'];
-        $self->subsStartDate = $input['subsStartDate'];
-        $self->subsEndDate = $input['subsEndDate'];
-        $self->subsFrequency = $input['subsFrequency'];
-        $self->processNow = $input['processNow'];
-        $self->processNowAmount = $input['processNowAmount'];
-        $self->checksum = $input['checksum'];
+        $self->payGateId = $input->payGateId;
+        $self->payGateSecret = $input->payGateSecret;
+        $self->reference = $input->reference;
+        $self->amount = $self->amountInCents($input->amount);
+        $self->currency = $input->currency;
+        $self->returnUrl = $input->returnUrl;
+        $self->transactionDate = $input->transactionDate;
+        $self->subsStartDate = $input->subsStartDate;
+        $self->subsEndDate = $input->subsEndDate;
+        $self->subsFrequency = $input->subsFrequency;
+        $self->processNow = $input->processNow;
+        $self->processNowAmount = $input->processNowAmount;
+        $self->checksum = $input->checksum;
 
         return $self;
-    }
-
-    private function amountInCents(float $amount): int
-    {
-        return intval($amount * 100);
     }
 }
