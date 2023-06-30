@@ -6,7 +6,7 @@ use rainwaves\PaygatePayment\Abstraction\Arrayable;
 use rainwaves\PaygatePayment\Entities\AmountConverterTrait;
 use rainwaves\PaygatePayment\Entities\PayGateProperties;
 
-class PayGateRequest extends Arrayable
+class PayGateInitialRequest extends Arrayable
 {
     use AmountConverterTrait, PayGateProperties;
 
@@ -26,8 +26,10 @@ class PayGateRequest extends Arrayable
     public string $country;
     public string $email;
 
-    public static function inputRequest(\stdClass $input): PayGateRequest
+    public static function inputRequest(array $input): PayGateInitialRequest
     {
+        $input = (object)$input;
+
         $self = new self();
         $self->payGateId = $input->payGateId;
         $self->payGateSecret = $input->payGateSecret;
