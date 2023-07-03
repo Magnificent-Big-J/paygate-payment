@@ -2,7 +2,7 @@
 
 namespace rainwaves\PaygatePayment\Contracts;
 
-interface RequestFactoryInterface
+interface PaySubsInterface
 {
 
 }
