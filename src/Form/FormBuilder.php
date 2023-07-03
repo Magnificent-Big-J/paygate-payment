@@ -4,7 +4,7 @@ namespace rainwaves\PaygatePayment\Form;
 
 class FormBuilder
 {
-    public static function buildForm(array $formFields, string $action): string
+    public static function buildForm(array $formFields, string $url): string
     {
         ob_start();
         include 'form_template.php';
