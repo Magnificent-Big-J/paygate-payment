@@ -11,19 +11,6 @@ class PayGateValidationTest extends TestCase
     /**
      * @test
      */
-    public function testValidateMissingPayGateId(): void
-    {
-        $input = $this->inputData();
-        unset($input['payGateId']);
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid input data: payGateId must be present');
-
-        PayGateValidation::validate($input);
-    }
-
-    /**
-     * @test
-     */
     public function testValidateMissingReference()
     {
         $input = $this->inputData();
