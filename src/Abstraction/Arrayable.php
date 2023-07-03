@@ -24,6 +24,6 @@ abstract class Arrayable
     private function snakeCase(string $value): string
     {
         $value = preg_replace('/(.)(?=[A-Z])/u', '$1_', $value);
-        return strtolower($value);
+        return strtoupper($value);
     }
 }
