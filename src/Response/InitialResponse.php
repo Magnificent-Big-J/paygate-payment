@@ -2,21 +2,23 @@
 
 namespace rainwaves\PaygatePayment\Response;
 
-class InitialResponse
+use rainwaves\PaygatePayment\Abstraction\Arrayable;
+
+class InitialResponse extends Arrayable
 {
     public string $checkSum;
-    public string $payRequestID;
-    public string $paygateID;
+    public string $payRequestId;
+    public string $paygateId;
     public string $reference;
 
     public function __construct(array $response)
     {
         $response = (object)$response;
 
-        $this->payRequestID = $response->PAY_REQUEST_ID;
+        $this->payRequestId = $response->PAY_REQUEST_ID;
         $this->checkSum = $response->CHECKSUM;
         $this->reference = $response->REFERENCE;
-        $this->paygateID = $response->PAYGATE_ID;
+        $this->paygateId = $response->PAYGATE_ID;
 
     }
 }
