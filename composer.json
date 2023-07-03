@@ -27,5 +27,15 @@
     "require-dev": {
         "orchestra/testbench": "^6.28",
         "friendsofphp/php-cs-fixer": "^3.14"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "rainwaves\\PaygatePayment\\PayGateServiceProvider"
+            ],
+            "config": [
+                "paygate.php"
+            ]
+        }
     }
 }
