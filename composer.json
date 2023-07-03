@@ -21,10 +21,21 @@
     "require": {
         "php": "^7.4|^8.0|^8.1|^8.2",
         "illuminate/support": "^7.0|^8.0|^8.1|^8.2",
-        "respect/validation": "^2.2"
+        "respect/validation": "^2.2",
+        "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {
         "orchestra/testbench": "^6.28",
         "friendsofphp/php-cs-fixer": "^3.14"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "rainwaves\\PaygatePayment\\PayGateServiceProvider"
+            ],
+            "config": [
+                "paygate.php"
+            ]
+        }
     }
 }

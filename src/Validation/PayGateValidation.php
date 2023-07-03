@@ -1,6 +1,6 @@
 <?php
 
-namespace rainwaves\PaygatePayment\Response;
+namespace rainwaves\PaygatePayment\Validation;
 
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
@@ -10,9 +10,7 @@ class PayGateValidation
     public static function validate(array $input): void
     {
         try {
-            v::key('payGateId', v::notEmpty())
-                ->key('payGateSecret', v::notEmpty())
-                ->key('reference', v::notEmpty())
+            v::key('reference', v::notEmpty())
                 ->key('currency', v::notEmpty())
                 ->key('returnUrl', v::notEmpty())
                 ->key('transactionDate', v::notEmpty())
