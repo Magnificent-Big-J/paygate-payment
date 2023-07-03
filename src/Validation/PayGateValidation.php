@@ -1,6 +1,6 @@
 <?php
 
-namespace rainwaves\PaygatePayment\Response;
+namespace rainwaves\PaygatePayment\Validation;
 
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
