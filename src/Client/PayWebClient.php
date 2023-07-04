@@ -5,15 +5,17 @@ namespace rainwaves\PaygatePayment\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
+use rainwaves\PaygatePayment\Contracts\FormInterface;
 use rainwaves\PaygatePayment\Contracts\PayWebInterface;
 use rainwaves\PaygatePayment\Entities\CheckSumTrait;
 use rainwaves\PaygatePayment\Form\FormBuilder;
 use rainwaves\PaygatePayment\Model\PaymentURL;
+use rainwaves\PaygatePayment\Model\Sequence;
 use rainwaves\PaygatePayment\Request\PayGateInitialRequest;
 use rainwaves\PaygatePayment\Response\InitialResponse;
 use rainwaves\PaygatePayment\Validation\PayGateValidation;
 
-class PayWebClient implements PayWebInterface
+class PayWebClient implements PayWebInterface, FormInterface
 {
     use CheckSumTrait;
     private string $payGateId;
@@ -32,9 +34,9 @@ class PayWebClient implements PayWebInterface
         $inputData = array_merge($inputData, ['payGateId' => $this->payGateId]);
         PayGateValidation::validate($inputData);
         $request = PayGateInitialRequest::inputRequest($inputData);
-        $checkSum = $this->generateCheckSum($request->toArray(), $this->encryption);
+        $checkSum = $this->payWebCheckSum($request->toArray(), $this->encryption,'');
         $requestData = array_merge($request->toArray(), ['CHECKSUM' => $checkSum]);
-        $response = $this->sendPostRequest(PaymentURL::PAY_WEB_INITIAL_URL, $this->fixTheOrder($requestData));
+        $response = $this->sendPostRequest(PaymentURL::PAY_WEB_INITIAL_URL, Sequence::order($requestData, Sequence::PAY_WEB));
         parse_str($response->getBody()->getContents(), $responseData);
 
         $this->initialResponse = new InitialResponse($responseData);

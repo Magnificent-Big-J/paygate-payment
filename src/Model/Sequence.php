@@ -4,8 +4,10 @@ namespace rainwaves\PaygatePayment\Model;
 
 class Sequence
 {
+    public const PAY_WEB ='payweb';
+    public const PAY_SUBS ='paysubs';
     protected const SEQUENCE_ORDERS = [
-        'payweb' => [
+        self::PAY_WEB => [
             'PAYGATE_ID',
             'REFERENCE',
             'AMOUNT',
@@ -17,7 +19,7 @@ class Sequence
             'EMAIL',
             'NOTIFY_URL'
         ],
-        'paysubs' => [
+        self::PAY_SUBS => [
             'VERSION',
             'PAYGATE_ID',
             'REFERENCE',
@@ -32,7 +34,6 @@ class Sequence
             'PROCESS_NOW_AMOUNT',
             'NOTIFY_URL',
         ],
-        // Add more sequence types here...
     ];
 
     public static function order(array $input, string $sequenceType): array

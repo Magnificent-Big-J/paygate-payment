@@ -29,7 +29,7 @@ class PaySubsClient implements PaySubsInterface, FormInterface
         $this->inputData = array_merge($input, ['payGateId' => $this->payGateId]);
         $request = PaySubsRequest::inputRequest($this->inputData);
         $this->inputData = $request->toArray();
-        $this->inputData = Sequence::order($this->inputData, 'paysubs');
+        $this->inputData = Sequence::order($this->inputData, Sequence::PAY_SUBS);
         $checkSum = $this->paySubsCheckSum($this->inputData, $this->encryption,'|');
         $this->inputData['CHECKSUM'] = $checkSum;
         return $this->inputData;
