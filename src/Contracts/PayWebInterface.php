@@ -9,6 +9,4 @@ interface PayWebInterface
 {
     public function initiatePayment(array $inputData): InitialResponse;
     public function initiatePaymentAndChain(array $inputData): PayWebClient;
-
-    public function createForm(): string;
 }
