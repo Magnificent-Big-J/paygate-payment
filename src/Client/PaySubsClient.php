@@ -17,7 +17,7 @@ class PaySubsClient implements PaySubsInterface, FormInterface
     private string $payGateId;
     private string $encryption;
 
-    private array $inputData;
+    private ?array $inputData;
     public function __construct(string $payGateId, string $encryption)
     {
         $this->payGateId = $payGateId;
@@ -43,7 +43,7 @@ class PaySubsClient implements PaySubsInterface, FormInterface
 
     public function createForm(): string
     {
-        if (!$this->inputData) {
+        if (!isset($this->inputData)) {
             throw new \RuntimeException('Subscription data is not provided!');
         }
 
