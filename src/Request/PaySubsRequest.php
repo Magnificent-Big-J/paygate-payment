@@ -9,7 +9,6 @@ use rainwaves\PaygatePayment\Entities\PayGateProperties;
 class PaySubsRequest  extends Arrayable
 {
     use AmountConverterTrait, PayGateProperties;
-    protected string $payGateFormAction = 'https://www.paygate.co.za/paysubs/process.trans';
     public int $version = 21;
     public string $reference;
     public int $amount;
@@ -21,14 +20,14 @@ class PaySubsRequest  extends Arrayable
     public string $subsFrequency;
     public string $processNow;
     public string $processNowAmount;
-    public string $checksum;
+    public string $paygateId;
 
     public static function inputRequest(array $input): PaySubsRequest
     {
         $input = (object) $input;
+
         $self = new self();
-        $self->payGateId = $input->payGateId;
-        $self->payGateSecret = $input->payGateSecret;
+        $self->paygateId = $input->payGateId;
         $self->reference = $input->reference;
         $self->amount = $self->amountInCents($input->amount);
         $self->currency = $input->currency;
@@ -38,8 +37,7 @@ class PaySubsRequest  extends Arrayable
         $self->subsEndDate = $input->subsEndDate;
         $self->subsFrequency = $input->subsFrequency;
         $self->processNow = $input->processNow;
-        $self->processNowAmount = $input->processNowAmount;
-        $self->checksum = $input->checksum;
+        $self->processNowAmount =  $self->amountInCents($input->processNowAmount);
 
         return $self;
     }
