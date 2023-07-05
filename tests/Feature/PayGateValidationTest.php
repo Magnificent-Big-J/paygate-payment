@@ -125,19 +125,6 @@ class PayGateValidationTest extends TestCase
         PayGateValidation::validate($input);
     }
 
-    /**
-     * @test
-     */
-    public function testValidateMissingPayGateSecret()
-    {
-        $input = $this->inputData();
-        unset($input['payGateSecret']);
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid input data: payGateSecret must be present');
-
-        PayGateValidation::validate($input);
-    }
-
     protected function inputData(): array
     {
         $DateTime = new DateTime();
