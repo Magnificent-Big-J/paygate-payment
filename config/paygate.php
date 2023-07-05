@@ -4,4 +4,5 @@ return [
     'paygate_secret' => env('PAYGATE_SECRET', 'your-paygate-secret'),
     'notification_url' => env('PAYGATE_NOTIFICATION_URL', 'https://my.application.com/notify'),
     'return_url' => env('PAYGATE_RETURN_URL', 'https://my.application.com/return'),
+    'subs_return_url' => env('PAYGATE_SUBS_RETURN_URL', 'https://my.application.com/subs-return'),
 ];
