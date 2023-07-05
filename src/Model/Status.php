@@ -22,7 +22,7 @@ class Status
         self::PAYMENT_SETTLEMENT_VOIDED => 'Settlement Voided',
     ];
 
-    public function getStatusText(int $status)
+    public static function getStatusText(int $status)
     {
         return self::$paymentTexts[$status];
     }

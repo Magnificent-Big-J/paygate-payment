@@ -109,7 +109,7 @@ class SubscriptionFrequency
       self::MONTHLY_LAST_DAY => 'Last day of the month',
     ];
 
-    public function getSubscriptionFrequencyText(int $frequency): string
+    public static function getSubscriptionFrequencyText(int $frequency): string
     {
         return self::$subscriptionFrequencyText[$frequency];
     }

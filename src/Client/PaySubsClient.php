@@ -2,7 +2,6 @@
 
 namespace rainwaves\PaygatePayment\Client;
 
-use rainwaves\PaygatePayment\Contracts\FormInterface;
 use rainwaves\PaygatePayment\Contracts\PaySubsInterface;
 use rainwaves\PaygatePayment\Entities\CheckSumTrait;
 use rainwaves\PaygatePayment\Form\FormBuilder;
@@ -11,7 +10,7 @@ use rainwaves\PaygatePayment\Model\Sequence;
 use rainwaves\PaygatePayment\Request\PaySubsRequest;
 use rainwaves\PaygatePayment\Validation\PaySubsValidation;
 
-class PaySubsClient implements PaySubsInterface, FormInterface
+class PaySubsClient implements PaySubsInterface
 {
     use CheckSumTrait;
     private string $payGateId;

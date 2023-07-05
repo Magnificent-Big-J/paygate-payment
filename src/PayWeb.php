@@ -3,9 +3,10 @@
 namespace rainwaves\PaygatePayment;
 
 use rainwaves\PaygatePayment\Client\PayWebClient;
+use rainwaves\PaygatePayment\Contracts\PayWebInterface;
 use rainwaves\PaygatePayment\Response\InitialResponse;
 
-class PayWeb
+class PayWeb implements PayWebInterface
 {
     private PayWebClient $payWebClient;
 
@@ -24,10 +25,9 @@ class PayWeb
         return $this->payWebClient->createForm();
     }
 
-    public function initiatePaymentAndChain(array $inputData): self
+    public function initiatePaymentAndChain(array $inputData): PayWebClient
     {
         $this->payWebClient->initiatePaymentAndChain($inputData);
-        return $this;
+        return $this->payWebClient;
     }
-
 }

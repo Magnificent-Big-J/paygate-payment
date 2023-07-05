@@ -46,7 +46,7 @@ class CreditCardCode
         self::INVALID_AMOUNT => 'Invalid Amount',
     ];
 
-    public function getCreditCardCodeText(int $code): string
+    public static function getCreditCardCodeText(int $code): string
     {
         return self::$creditCardCodeTexts[$code];
     }

@@ -5,7 +5,6 @@ namespace rainwaves\PaygatePayment\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
-use rainwaves\PaygatePayment\Contracts\FormInterface;
 use rainwaves\PaygatePayment\Contracts\PayWebInterface;
 use rainwaves\PaygatePayment\Entities\CheckSumTrait;
 use rainwaves\PaygatePayment\Form\FormBuilder;
@@ -15,7 +14,7 @@ use rainwaves\PaygatePayment\Request\PayGateInitialRequest;
 use rainwaves\PaygatePayment\Response\InitialResponse;
 use rainwaves\PaygatePayment\Validation\PayGateValidation;
 
-class PayWebClient implements PayWebInterface, FormInterface
+class PayWebClient implements PayWebInterface
 {
     use CheckSumTrait;
     private string $payGateId;

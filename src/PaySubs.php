@@ -1,10 +1,11 @@
 <?php
 
-namespace rainwaves\PaygatePayment\PaySubs;
+namespace rainwaves\PaygatePayment;
 
 use rainwaves\PaygatePayment\Client\PaySubsClient;
+use rainwaves\PaygatePayment\Contracts\PaySubsInterface;
 
-class PaySubs
+class PaySubs implements PaySubsInterface
 {
     private PaySubsClient $paySubsClient;
 
@@ -21,7 +22,7 @@ class PaySubs
     public function createSubscriptionAndChain(array $input): PaySubsClient
     {
         $this->paySubsClient->createSubscriptionAndChain($input);
-        return  $this;
+        return  $this->paySubsClient;
     }
 
     public function createForm(): string
