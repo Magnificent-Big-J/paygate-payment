@@ -10,10 +10,15 @@ class PayGateServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->publishes([
+            __DIR__.'/../config/paygate.php' => config_path('paygate.php'),
+        ], 'paygate-config');
+
         $this->app->bind(PayWebInterface::class, function ($app) {
             $payGateId = config('paygate.paygate_id');
             $payGateSecret = config('paygate.paygate_secret');
             return new PayWebClient($payGateId, $payGateSecret);
         });
     }
+
 }
