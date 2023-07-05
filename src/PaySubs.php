@@ -1,6 +1,6 @@
 <?php
 
-namespace rainwaves\PaygatePayment\PaySubs;
+namespace rainwaves\PaygatePayment;
 
 use rainwaves\PaygatePayment\Client\PaySubsClient;
 use rainwaves\PaygatePayment\Contracts\PaySubsInterface;
