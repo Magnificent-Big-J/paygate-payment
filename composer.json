@@ -37,5 +37,6 @@
                 "paygate.php"
             ]
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
