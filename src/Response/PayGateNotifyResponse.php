@@ -12,17 +12,17 @@ class PayGateNotifyResponse
     public string $authCode;
     public string $currency;
     public int $amount;
-    public int $resultDesc;
+    public string $resultDesc;
     public int $transactionID;
     public string $riskIndicator;
     public string $payMethod;
     public string $payMethodDetail;
-    public string $user1;
-    public string $user2;
-    public string $user3;
-    public string $validID;
-    public string $payVaultData1;
-    public string $payVaultData2;
+    public ?string $user1 = null;
+    public ?string $user2 = null;
+    public ?string $user3 = null;
+    public ?string $validID = null;
+    public ?string $payVaultData1 = null;
+    public ?string $payVaultData2 = null;
     public string $checkSum;
 
     public function __construct(array $response)
@@ -42,12 +42,12 @@ class PayGateNotifyResponse
         $this->riskIndicator = $response->RISK_INDICATOR;
         $this->payMethod = $response->PAY_METHOD;
         $this->payMethodDetail = $response->PAY_METHOD_DETAIL;
-        $this->user1 = $response->USER1;
-        $this->user2 = $response->USER2;
-        $this->user3 = $response->USER3;
-        $this->validID = $response->VAULT_ID;
-        $this->payVaultData1 = $response->PAYVAULT_DATA_1;
-        $this->payVaultData2 = $response->PAYVAULT_DATA_2;
+        $this->user1 = $response->USER1 ?? $this->user1;
+        $this->user2 = $response->USER2 ?? $this->user2;
+        $this->user3 = $response->USER3 ?? $this->user3;
+        $this->validID = $response->VAULT_ID ?? $this->validID;
+        $this->payVaultData1 = $response->PAYVAULT_DATA_1 ?? $this->payVaultData1;
+        $this->payVaultData2 = $response->PAYVAULT_DATA_2 ?? $this->payVaultData2;
         $this->checkSum = $response->CHECKSUM;
     }
 
