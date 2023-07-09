@@ -74,13 +74,8 @@ class PayWebClient implements PayWebInterface
 
         return $response;
     }
-
-    private function fixTheOrder(array $input): array
+    public function getInitialResponse(): ?InitialResponse
     {
-        $notifyUrl = $input['NOTIFY_URL'];
-        unset($input['NOTIFY_URL']);
-        $input['NOTIFY_URL'] = $notifyUrl;
-
-        return $input;
+        return $this->initialResponse;
     }
 }
